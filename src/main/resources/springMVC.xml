@@ -12,7 +12,7 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
 
-
+    <!--启动注解识别-->
     <context:annotation-config/>
     <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
     <context:component-scan base-package="com.zengsy.controller">
@@ -22,9 +22,10 @@
 
     <!-- 配置注解驱动 -->
     <mvc:annotation-driven />
-    
+    <!--开通静态资源的访问-->
     <mvc:default-servlet-handler />
 
+    <!-- 视图定位 -->
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀(如果最后一个还是表示文件夹,则最后的斜杠不要漏了) 使用JSP-->
     <!-- 默认的视图解析器 在下边的解析错误时使用 (默认使用html)- -->
     <bean
@@ -45,4 +46,7 @@
     <!--<mvc:resources mapping="/css/**" location="/WEB-INF/statics/css/"/>-->
     <!--<mvc:resources mapping="/js/**" location="/WEB-INF/statics/js/"/>-->
     <!--<mvc:resources mapping="/images/**" location="/WEB-INF/statics/images/"/>-->
+
+    <!-- 对上传文件的解析-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 </beans>
