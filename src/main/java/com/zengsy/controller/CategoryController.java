@@ -46,6 +46,65 @@ public class CategoryController {
 		return "admin/listCategory";
 	}
 
+	// 增加新的分类
+	@RequestMapping("admin_category_add")
+	// 参数Category c 接收页面提交的分类名称
+	// 参数 session 用于在后续获取当前应用的路径
+	// UploadedImageFile 用于接收上传的图片
+	public String add(Category c, HttpSession session, UploadedImageFile uploadedImageFile) throws IOException {
+	    categoryService.add(c);
+	    // 通过session获取ControllerContext,再通过getRealPath定位存放分类图片的路径。 得到的file路径为.....\target\tmall_ssm\img\category
+	    File imageFolder = new File(session.getServletContext().getRealPath("img/category"));
+	    // 根据分类id创建文件名
+	    File file = new File(imageFolder, c.getId() + ".jpg");
+
+	    // 如果/img/category目录不存在，则创建该目录，否则后续保存浏览器穿过来的图片，都会提示无法保存
+	    if (!file.getParentFile().exists()) {
+	        file.getParentFile().mkdirs();
+	    }
+	    // 通过UploadedImageFile 把浏览器传递过来的图片保存在上述指定的位置
+	    // 使用transferTo（dest）方法将上传文件写到服务器上指定的文件。
+	    uploadedImageFile.getImage().transferTo(file);
+	    // 通过ImageUtil.change2jpg(file); 确保图片格式一定是jpg，而不仅仅是后缀名是jpg.
+	    BufferedImage img = ImageUtil.change2jpg(file);
+	    ImageIO.write(img, "jpg", file);
+	    // 客户端跳转到admin_category_list
+	    return "redirect:/admin_category_list";
+	}
+
+	@RequestMapping("admin_category_delete")
+	public String delete(int id, HttpSession session) {
+		categoryService.delete(id);
+
+		File imageFolder = new File(session.getServletContext().getRealPath("img/category"));
+		File file = new File(imageFolder, id + ".jpg");
+		file.delete();
+
+		return "redirect:/admin_category_list";
+	}
+
+	// 对应的分类管理界面点击编辑后的界面，该方法用于将从jsp获取到的id找到对应category类取出name和图片放入当前的编辑页面
+	@RequestMapping("admin_category_edit")
+	public String edit(int id, Model model) {
+		Category c = categoryService.get(id);
+		model.addAttribute("c", c);
+		return "admin/editCategory";
+	}
+
+	// 对应分类编辑页面的确认编辑操作，完成数据库内容的插入
+	@RequestMapping("admin_category_update")
+	public String update(Category c, HttpSession session, UploadedImageFile uploadedImageFile) throws IOException {
+		categoryService.update(c);
+		MultipartFile image = uploadedImageFile.getImage();
+		if (null != image && !image.isEmpty()) {
+			File imageFolder = new File(session.getServletContext().getRealPath("img/category"));
+			File file = new File(imageFolder,c.getId()+".jpg");
+			image.transferTo(file);
+			BufferedImage img = ImageUtil.change2jpg(file);
+			ImageIO.write(img, "jpg", file);
+		}
+		return "redirect:/admin_category_list";
+	}
 
 
 
@@ -66,76 +125,6 @@ public class CategoryController {
     //
     //
 	//	return "admin/listCategory";
-	//}
-
-	//@RequestMapping("addmin_category_add")
-	//public String add(Category c, HttpSession session, UploadedImageFile uploadedImageFile) throws IOException {
-	//	categoryService.add(c);
-    //
-	//	//File imageFolder = new File(session.getServletContext().getRealPath("img/category"));
-	//	//File file = new File(imageFolder, c.getId() + ".jpg");
-	//	//uploadedImageFile.getImage().transferTo(file);
-	//	//BufferedImage img = ImageUtil.change2jpg(file);
-	//	//ImageIO.write(img, "jpg", file);
-	//	return "redirect:/admin_category_list";
-	//}
-
-	//@RequestMapping("admin_category_delete")
-	//public String delete(int id, HttpSession session) {
-	//	categoryService.delete(id);
-	//	// getSession().getServletContext() 获取的是Servlet容器对象，相当于tomcat容器了。getRealPath("/") 获取实际路径，“/”指代项目根目录，所以代码返回的是项目在容器中的实际发布运行的根路径
-	//	File imageFoleder = new File(session.getServletContext().getRealPath("img/category"));
-	//	File file = new File(imageFoleder, id + ".jpg");
-	//	file.delete();
-    //
-	//	return "redirect:/admin_category_list";
-	//}
-    //
-	//@RequestMapping("admin_category_edit")
-	//public String edit(int id, Model model) throws IOException {
-	//	Category c = categoryService.get(id);
-    //
-	//	model.addAttribute("c", c);
-    //
-	//	return "admin/editCategory";
-	//}
-
-	//@RequestMapping("admin_category_update")
-	//public String update(Category c, HttpSession session, UploadedImageFile uploadedImageFile) throws IOException {
-	//	categoryService.update(c);
-    //
-	//	MultipartFile image = uploadedImageFile.getImage();
-	//	if(null != image &&! image.isEmpty()){
-	//		File imageFolder = new File(session.getServletContext().getRealPath("img/category"));
-	//		File file = new File(imageFolder,c.getId()+".jpg");
-	//		image.transferTo(file);
-	//		BufferedImage img = ImageUtil.change2jpg(file);
-	//		ImageIO.write(img, "jpg", file);
-	//	}
-	//	return "redirect:/admin_category_list";
-	//}
-
-
-
-	//@RequestMapping("admin_category_edit")
-	//public String edit(int id, Model model) {
-	//
-	//}
-	//// 使用modelandview的方式
-	//@RequestMapping("admin_category_list")
-	//public ModelAndView list(Page page){
-	//	ModelAndView mav = new ModelAndView();
-	//	PageHelper.offsetPage(page.getStart(),5);
-	//	List<Category> categoryList = categoryService.list();
-	//	int total = (int) new PageInfo<>(categoryList).getTotal();
-	//
-	//	page.caculateLast(total);
-	//
-	//	// 放入转发参数
-	//	mav.addObject("cs", categoryList);
-	//	// 放入jsp路径
-	//	mav.setViewName("listCategory");
-	//	return mav;
 	//}
 
 }

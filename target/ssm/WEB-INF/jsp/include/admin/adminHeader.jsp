@@ -10,13 +10,14 @@
 <html>
 
 <head>
-	<script src=""></script>
+	<script src="js/jquery/2.0.0/jquery.min.js"></script>
 	<%--先将ContextPath,即输出为项目根目录，即WebRoot，放如page对象中，再使用el表达式取出--%>
 	<c:set value="${pageContext.request.contextPath}" var="path" scope="page"/>
 	<link href="${path}/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
 	<script src="${path}/js/bootstrap/3.3.6/bootstrap.min.js"></script>
 	<link href="${path}/css/back/style.css" rel="stylesheet">
-	
+
+
 <script>
 function checkEmpty(id, name){
 	var value = $("#"+id).val();
@@ -58,7 +59,7 @@ function checkInt(id, name){
 	return true;
 }
 
-
+// 对所有的删除链接都进行监听
 $(function(){
 	$("a").click(function(){
 		var deleteLink = $(this).attr("deleteLink");

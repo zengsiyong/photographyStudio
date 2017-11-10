@@ -8,6 +8,6 @@
 
 <div class="footer">
 </div>
-	copyright@2017 曾思勇
+	<div align="center">copyright@2017 曾思勇</div>
 </body>
 </html>

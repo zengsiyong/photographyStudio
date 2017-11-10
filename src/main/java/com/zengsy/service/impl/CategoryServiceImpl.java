@@ -17,14 +17,14 @@ public class CategoryServiceImpl  implements CategoryService{
 
 	// 提供一个支持分页的查询方法list(Page page)和获取总数的方法total
 	@Override
-	public int total() {
-		return categoryMapper.total();
-	}
-
 	public List<Category> list(Page page){
 		return categoryMapper.list(page);
 	}
 
+	@Override
+	public int total() {
+		return categoryMapper.total();
+	}
 
 	@Override
 	public void add(Category category) {
@@ -39,12 +39,12 @@ public class CategoryServiceImpl  implements CategoryService{
 
 	@Override
 	public Category get(int id) {
-		return null;
+		return categoryMapper.get(id);
 	}
 
 	@Override
 	public void update(Category category) {
-
+		categoryMapper.update(category);
 	}
 
 

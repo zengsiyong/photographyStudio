@@ -28,15 +28,16 @@ $(function(){
 </script>
 
 <div class="workingArea">
-
+	<%-- 使用前端框架的面包屑导航样式--%>
 	<ol class="breadcrumb">
 	  <li><a href="admin_category_list">所有分类</a></li>
 	  <li class="active">编辑分类</li>
 	</ol>
 
-	<div class="panel panel-warning editDiv">
+	<div class="panel panel-success editDiv">
 	  <div class="panel-heading">编辑分类</div>
 	  <div class="panel-body">
+		  	<%--method="post" 用于提交中文，enctype="multipart/form-data" 用于提交二进制文件（图片）--%>
 	    	<form method="post" id="editForm" action="admin_category_update"  enctype="multipart/form-data">
 	    		<table class="editTable">
 	    			<tr>
@@ -44,7 +45,7 @@ $(function(){
 	    				<td><input  id="name" name="name" value="${c.name}" type="text" class="form-control"></td>
 	    			</tr>
 	    			<tr>
-	    				<td>分类圖片</td>
+	    				<td>分类图片</td>
 	    				<td>
 	    					<input id="categoryPic" accept="image/*" type="file" name="filepath" />
 	    				</td>
