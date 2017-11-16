@@ -16,7 +16,7 @@
 				return false;
 // 			if (!checkEmpty("subTitle", "小标题"))
 // 				return false;
-			if (!checkNumber("orignalPrice", "原价格"))
+			if (!checkNumber("originalPrice", "原价格"))
 				return false;
 			if (!checkNumber("promotePrice", "优惠价格"))
 				return false;
@@ -64,21 +64,22 @@
 						<td>${p.id}</td>
 						<td>
 						
-						<c:if test="${!empty p.firstProductImage}">
-							<img width="40px" src="img/productSingle/${p.firstProductImage.id}.jpg">
-						</c:if>
+						<%--<c:if test="${!empty p.firstProductImage}">--%>
+							<%--<img width="40px" src="img/productSingle/${p.firstProductImage.id}.jpg">--%>
+						<%--</c:if>--%>
 						
 						</td>
 						<td>${p.name}</td>
 						<td>${p.subTitle}</td>
-						<td>${p.orignalPrice}</td>
+						<td>${p.originalPrice}</td>
 						<td>${p.promotePrice}</td>
 						<td>${p.stock}</td>
+
 						<td><a href="admin_productImage_list?pid=${p.id}"><span
 								class="glyphicon glyphicon-picture"></span></a></td>
 						<td><a href="admin_product_editPropertyValue?id=${p.id}"><span
-								class="glyphicon glyphicon-th-list"></span></a></td>
-						
+								class="glyphicon glyphicon glyphicon-tasks"></span></a></td>
+
 						<td><a href="admin_product_edit?id=${p.id}"><span
 								class="glyphicon glyphicon-edit"></span></a></td>
 						<td><a deleteLink="true"
@@ -95,7 +96,7 @@
 		<%@include file="../include/admin/adminPage.jsp"%>
 	</div>
 
-	<div class="panel panel-warning addDiv">
+	<div class="panel panel-success addDiv">
 		<div class="panel-heading">新增产品</div>
 		<div class="panel-body">
 			<form method="post" id="addForm" action="admin_product_add">
@@ -112,7 +113,7 @@
 					</tr>
 					<tr>
 						<td>原价格</td>
-						<td><input id="orignalPrice" value="99.98" name="orignalPrice" type="text"
+						<td><input id="originalPrice" value="99.98" name="originalPrice" type="text"
 							class="form-control"></td>
 					</tr>
 					<tr>

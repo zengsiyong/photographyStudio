@@ -19,7 +19,7 @@ $(function() {
 			return false;
 //			if (!checkEmpty("subTitle", "小标题"))
 //				return false;
-		if (!checkNumber("orignalPrice", "原价格"))
+		if (!checkNumber("originalPrice", "原价格"))
 			return false;
 		if (!checkNumber("promotePrice", "优惠价格"))
 			return false;
@@ -38,7 +38,7 @@ $(function() {
 	  <li class="active">编辑产品</li>
 	</ol>
 	
-	<div class="panel panel-warning editDiv">
+	<div class="panel panel-success editDiv">
 		<div class="panel-heading">编辑产品</div>
 		<div class="panel-body">
 			<form method="post" id="editForm" action="admin_product_update">
@@ -56,7 +56,7 @@ $(function() {
 					</tr>
 					<tr>
 						<td>原价格</td>
-						<td><input id="orignalPrice" value="${p.orignalPrice}" name="orignalPrice" type="text"
+						<td><input id="originalPrice" value="${p.originalPrice}" name="originalPrice" type="text"
 							class="form-control"></td>
 					</tr>
 					<tr>

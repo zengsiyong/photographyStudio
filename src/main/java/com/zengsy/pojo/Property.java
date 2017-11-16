@@ -1,35 +1,44 @@
 package com.zengsy.pojo;
 
-/**
- * Created by zengsy on 2017-10-09.
- * 这是约拍套餐的所有属性的表
- * 与Category是多对一的关系
- */
 public class Property {
+    private Integer id;
+
+    private Integer cid;
 
     private String name;
-    private Category category;
-    private int id;
 
-    public int getId() {
+    // 非数据库字段Category,为满足接下来的业务需求
+    private  Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getCid() {
+        return cid;
+    }
+
+    public void setCid(Integer cid) {
+        this.cid = cid;
     }
 
     public String getName() {
         return name;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public Category getCategory() {
-        return category;
-    }
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
 }

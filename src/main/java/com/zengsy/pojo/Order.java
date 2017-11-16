@@ -1,133 +1,40 @@
 package com.zengsy.pojo;
 
 import java.util.Date;
-import java.util.List;
 
-/**
- * Created by xlc on 2017-10-09.
- * 这个订单类用来存放订单信息，包括邮寄地址，点好号码等信息
- * 订单表的字段如下
- * orderCode： 订单号
- * address:收货地址
- * post: 邮编
- * receiver: 收货人信息
- * mobile: 手机号码
- * userMessage: 用户备注信息
- * createDate: 订单创建日期
- * payDate: 支付日期
- * deliveryDate: 发货日期
- * confirmDate：确认收货日期
- * status: 订单状态
- * 外键uid，指向用户表id字段
- */
 public class Order {
+    private Integer id;
+
     private String orderCode;
+
     private String address;
+
     private String post;
+
     private String receiver;
+
     private String mobile;
+
     private String userMessage;
+
     private Date createDate;
+
     private Date payDate;
+
     private Date deliveryDate;
+
     private Date confirmDate;
-    private User user;
-    private int id;
-    private List<OrderItem> orderItems;
-    private float total;
-    private int totalNumber;
+
+    private Integer uid;
+
     private String status;
 
-    public String getStatusDesc(){
-        String desc ="未知";
-        switch(status){
-//          case OrderDAO.waitPay:
-//              desc="待付款";
-//              break;
-//          case OrderDAO.waitDelivery:
-//              desc="待发货";
-//              break;
-//          case OrderDAO.waitConfirm:
-//              desc="待收货";
-//              break;
-//          case OrderDAO.waitReview:
-//              desc="等评价";
-//              break;
-//          case OrderDAO.finish:
-//              desc="完成";
-//              break;
-//          case OrderDAO.delete:
-//              desc="刪除";
-//              break;
-//          default:
-//              desc="未知";
-        }
-        return desc;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
-    }
-    public String getAddress() {
-        return address;
-    }
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    public String getPost() {
-        return post;
-    }
-    public void setPost(String post) {
-        this.post = post;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-    public String getUserMessage() {
-        return userMessage;
-    }
-    public void setUserMessage(String userMessage) {
-        this.userMessage = userMessage;
-    }
-    public Date getCreateDate() {
-        return createDate;
-    }
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-    public Date getPayDate() {
-        return payDate;
-    }
-    public void setPayDate(Date payDate) {
-        this.payDate = payDate;
-    }
-    public Date getDeliveryDate() {
-        return deliveryDate;
-    }
-    public void setDeliveryDate(Date deliveryDate) {
-        this.deliveryDate = deliveryDate;
-    }
-    public Date getConfirmDate() {
-        return confirmDate;
-    }
-    public void setConfirmDate(Date confirmDate) {
-        this.confirmDate = confirmDate;
-    }
-
-    public String getReceiver() {
-        return receiver;
-    }
-
-    public void setReceiver(String receiver) {
-        this.receiver = receiver;
     }
 
     public String getOrderCode() {
@@ -135,31 +42,87 @@ public class Order {
     }
 
     public void setOrderCode(String orderCode) {
-        this.orderCode = orderCode;
+        this.orderCode = orderCode == null ? null : orderCode.trim();
     }
 
-    public User getUser() {
-        return user;
+    public String getAddress() {
+        return address;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
     }
 
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
+    public String getPost() {
+        return post;
     }
 
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
+    public void setPost(String post) {
+        this.post = post == null ? null : post.trim();
     }
 
-    public float getTotal() {
-        return total;
+    public String getReceiver() {
+        return receiver;
     }
 
-    public void setTotal(float total) {
-        this.total = total;
+    public void setReceiver(String receiver) {
+        this.receiver = receiver == null ? null : receiver.trim();
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile == null ? null : mobile.trim();
+    }
+
+    public String getUserMessage() {
+        return userMessage;
+    }
+
+    public void setUserMessage(String userMessage) {
+        this.userMessage = userMessage == null ? null : userMessage.trim();
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getPayDate() {
+        return payDate;
+    }
+
+    public void setPayDate(Date payDate) {
+        this.payDate = payDate;
+    }
+
+    public Date getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(Date deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
+
+    public Date getConfirmDate() {
+        return confirmDate;
+    }
+
+    public void setConfirmDate(Date confirmDate) {
+        this.confirmDate = confirmDate;
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
     public String getStatus() {
@@ -167,15 +130,6 @@ public class Order {
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.status = status == null ? null : status.trim();
     }
-
-    public int getTotalNumber() {
-        return totalNumber;
-    }
-
-    public void setTotalNumber(int totalNumber) {
-        this.totalNumber = totalNumber;
-    }
-
 }

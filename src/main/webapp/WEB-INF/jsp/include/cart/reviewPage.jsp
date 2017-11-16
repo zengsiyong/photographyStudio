@@ -15,7 +15,7 @@
 			<table class="reviewProductInfoTable">
 				<tr>
 					<td width="75px">价格:</td>
-					<td><span class="reviewProductInfoTablePrice">￥<fmt:formatNumber type="number" value="${p.orignalPrice}" minFractionDigits="2"/></span> 元 </td>
+					<td><span class="reviewProductInfoTablePrice">￥<fmt:formatNumber type="number" value="${p.originalPrice}" minFractionDigits="2"/></span> 元 </td>
 				</tr>
 				<tr>
 					<td>配送</td>

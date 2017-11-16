@@ -37,10 +37,16 @@ public class CategoryController {
 	// 不使用分页插件的分页查询方式
 	@RequestMapping("admin_category_list")
 	public String list(Model model, Page page) {
-		List<Category> cs = categoryService.list(page);
-		int total = categoryService.total();
+		// List<Category> cs = categoryService.list(page);
+		// int total = categoryService.total();
 
+		// 使用pageHelper插件分页,固定格式
+		PageHelper.offsetPage(page.getStart(), page.getCount());
+		List<Category> cs = categoryService.list();
+		int total = (int) new PageInfo<>(cs).getTotal();
 		page.setTotal(total);
+
+
 		model.addAttribute("cs", cs);
 		model.addAttribute("page", page);
 		return "admin/listCategory";
@@ -53,7 +59,7 @@ public class CategoryController {
 	// UploadedImageFile 用于接收上传的图片
 	public String add(Category c, HttpSession session, UploadedImageFile uploadedImageFile) throws IOException {
 	    categoryService.add(c);
-	    // 通过session获取ControllerContext,再通过getRealPath定位存放分类图片的路径。 得到的file路径为.....\target\tmall_ssm\img\category
+	    // 通过session获取ControllerContext,再通过getRealPath定位存放分类图片的路径。 得到的file路径为.....\target\ssm\img\category
 	    File imageFolder = new File(session.getServletContext().getRealPath("img/category"));
 	    // 根据分类id创建文件名
 	    File file = new File(imageFolder, c.getId() + ".jpg");
@@ -96,8 +102,8 @@ public class CategoryController {
 	public String update(Category c, HttpSession session, UploadedImageFile uploadedImageFile) throws IOException {
 		categoryService.update(c);
 		MultipartFile image = uploadedImageFile.getImage();
-		if (null != image && !image.isEmpty()) {
-			File imageFolder = new File(session.getServletContext().getRealPath("img/category"));
+		if(null!=image &&!image.isEmpty()){
+			File  imageFolder= new File(session.getServletContext().getRealPath("img/category"));
 			File file = new File(imageFolder,c.getId()+".jpg");
 			image.transferTo(file);
 			BufferedImage img = ImageUtil.change2jpg(file);

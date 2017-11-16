@@ -68,7 +68,7 @@ $(function(){
 <div class="headbar show1">
 	<div class="head ">
 	
-		<span style="margin-left:10px" class="glyphicon glyphicon-th-list"></span>
+		<span style="margin-left:10px" class="glyphicon glyphicon glyphicon-tasks"></span>
 		<span style="margin-left:10px" >商品分类</span>
 		
 	</div>

@@ -19,7 +19,7 @@
 	  <li class="active">编辑属性</li>
 	</ol>
 
-	<div class="panel panel-warning editDiv">
+	<div class="panel panel-success editDiv">
 		<div class="panel-heading">编辑属性</div>
 		<div class="panel-body">
 			<form method="post" id="editForm" action="admin_property_update">

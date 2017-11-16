@@ -174,7 +174,7 @@ $(function(){
                     <span class="originalPriceYuan">¥</span>
                     <span class="originalPrice">
                      
-                        <fmt:formatNumber type="number" value="${p.orignalPrice}" minFractionDigits="2"/>                 
+                        <fmt:formatNumber type="number" value="${p.originalPrice}" minFractionDigits="2"/>
                     </span>
                 </div>
                 <div class="promotionDiv">

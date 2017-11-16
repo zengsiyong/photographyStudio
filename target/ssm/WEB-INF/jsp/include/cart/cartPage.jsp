@@ -258,7 +258,7 @@ function syncPrice(pid,num,price){
 							
 						</td>
 						<td>
-							<span class="cartProductItemOringalPrice">￥${oi.product.orignalPrice}</span>
+							<span class="cartProductItemOringalPrice">￥${oi.product.originalPrice}</span>
 							<span  class="cartProductItemPromotionPrice">￥${oi.product.promotePrice}</span>
 							
 						</td>

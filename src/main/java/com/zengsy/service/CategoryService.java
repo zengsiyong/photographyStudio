@@ -7,9 +7,11 @@ import com.zengsy.util.Page;
 
 public interface CategoryService {
 
-	List<Category> list(Page page);
+	//List<Category> list(Page page);
 
-	int total();
+	//int total();
+
+	List<Category> list();
 
 	void add(Category category);
 

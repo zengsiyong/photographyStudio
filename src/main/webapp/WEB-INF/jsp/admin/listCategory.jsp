@@ -50,7 +50,7 @@
 					<td><img height="40px" src="img/category/${c.id}.jpg"></td>
 					<td>${c.name}</td>
 
-					<td><a href="admin_property_list?cid=${c.id}"><span class="glyphicon glyphicon-th-list"></span></a></td>
+					<td><a href="admin_property_list?cid=${c.id}"><span class="glyphicon glyphicon glyphicon-tasks"></span></a></td>
 					<td><a href="admin_product_list?cid=${c.id}"><span class="glyphicon glyphicon-shopping-cart"></span></a></td>
 					<td><a href="admin_category_edit?id=${c.id}"><span class="glyphicon glyphicon-edit"></span></a></td>
 					<%--用于删除的超链，指向地址admin_category_delete,并且会传递当前分类对象的id过去。--%>

@@ -39,7 +39,7 @@
 					<td class="confirmPayOrderItemProductLink">
 						<a href="#nowhere">${oi.product.name}</a>
 					</td>
-					<td>￥<fmt:formatNumber type="number" value="${oi.product.orignalPrice}" minFractionDigits="2"/></td>
+					<td>￥<fmt:formatNumber type="number" value="${oi.product.originalPrice}" minFractionDigits="2"/></td>
 					<td>1</td>
 					<td><span class="conformPayProductPrice">￥<fmt:formatNumber type="number" value="${oi.product.promotePrice}" minFractionDigits="2"/></span></td>
 					<td><span>快递 ： 0.00 </span></td>
