@@ -4,6 +4,17 @@
          xmlns:web="http://java.sun.com/xml/ns/javaee" 
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 
+	<!-- log4j初始化 -->
+	<description>初始化Log4j</description>
+	<servlet>
+		<servlet-name>log4jinit</servlet-name>
+		<servlet-class>com.zengsy.util.Log4jInit</servlet-class>
+		<init-param>
+			<param-name>log4j_config_file</param-name>
+			<param-value>/WEB-INF/properties/log4j.properties</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 	<!-- spring的配置文件,该配置文件包括了mybatis的配置，自动扫描包并自动注入-->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>

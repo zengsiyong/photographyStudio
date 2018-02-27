@@ -32,11 +32,9 @@ import javax.servlet.http.HttpSession;
 public class CategoryController {
 	@Autowired
 	CategoryService categoryService;
-
-
-	// 不使用分页插件的分页查询方式
 	@RequestMapping("admin_category_list")
 	public String list(Model model, Page page) {
+		// 不使用分页插件的分页查询方式
 		// List<Category> cs = categoryService.list(page);
 		// int total = categoryService.total();
 
@@ -53,10 +51,19 @@ public class CategoryController {
 	}
 
 	// 增加新的分类
-	@RequestMapping("admin_category_add")
+
 	// 参数Category c 接收页面提交的分类名称
 	// 参数 session 用于在后续获取当前应用的路径
 	// UploadedImageFile 用于接收上传的图片
+	/**
+	 * @param
+	 */
+	@RequestMapping("admin_category_add")
+	// 下面三行代码验证当前页面是否有将上传的图片自动封装到uploadedImageFile对象中，结果是可以的,注意jsp页面的input标签如果要上传图片的话一定type="file" name="image" ，name如果是其他值的话就会报错
+	//public String add(UploadedImageFile uploadedImageFile){
+	//	System.out.println(uploadedImageFile.getImage());
+	//	return null;
+	//}
 	public String add(Category c, HttpSession session, UploadedImageFile uploadedImageFile) throws IOException {
 	    categoryService.add(c);
 	    // 通过session获取ControllerContext,再通过getRealPath定位存放分类图片的路径。 得到的file路径为.....\target\ssm\img\category
@@ -71,12 +78,14 @@ public class CategoryController {
 	    // 通过UploadedImageFile 把浏览器传递过来的图片保存在上述指定的位置
 	    // 使用transferTo（dest）方法将上传文件写到服务器上指定的文件。
 	    uploadedImageFile.getImage().transferTo(file);
-	    // 通过ImageUtil.change2jpg(file); 确保图片格式一定是jpg，而不仅仅是后缀名是jpg.
+		// 通过ImageUtil.change2jpg(file); 确保图片格式一定是jpg，而不仅仅是后缀名是jpg.
 	    BufferedImage img = ImageUtil.change2jpg(file);
 	    ImageIO.write(img, "jpg", file);
 	    // 客户端跳转到admin_category_list
 	    return "redirect:/admin_category_list";
 	}
+
+
 
 	@RequestMapping("admin_category_delete")
 	public String delete(int id, HttpSession session) {

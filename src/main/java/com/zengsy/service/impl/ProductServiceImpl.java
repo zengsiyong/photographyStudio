@@ -1,16 +1,15 @@
 package com.zengsy.service.impl;
 
 import com.zengsy.mapper.ProductMapper;
-import com.zengsy.pojo.Category;
-import com.zengsy.pojo.Product;
-import com.zengsy.pojo.ProductExample;
-import com.zengsy.pojo.Property;
+import com.zengsy.pojo.*;
 import com.zengsy.service.CategoryService;
+import com.zengsy.service.ProductImageService;
 import com.zengsy.service.ProductService;
 import com.zengsy.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +21,8 @@ public class ProductServiceImpl implements ProductService {
     ProductMapper productMapper;
     @Autowired
     CategoryService categoryService;
-
+    @Autowired
+    ProductImageService productImageService;
 
     @Override
     public List list(int cid) {
@@ -31,6 +31,8 @@ public class ProductServiceImpl implements ProductService {
         example.setOrderByClause("id desc");
         List result = productMapper.selectByExample(example);
         setCategory(result);
+        // 调用setFirstProductImage(List<Product> ps) 为多个产品设置图片
+        setFirstProductImage(result);
         return result;
     }
 
@@ -48,6 +50,8 @@ public class ProductServiceImpl implements ProductService {
     public Product get(int id) {
         Product p = productMapper.selectByPrimaryKey(id);
         setCategory(p);
+        // 在get方法中调用setFirstProductImage(Product p) 为单个产品设置图片
+        setFirstProductImage(p);
         return p;
     }
 
@@ -55,6 +59,24 @@ public class ProductServiceImpl implements ProductService {
     public void update(Product p) {
         productMapper.updateByPrimaryKeySelective(p);
     }
+
+    // 根据pid和图片类型查询出所有的单个图片，然后把第一个取出来放在firstProductImage上。
+    @Override
+    public void setFirstProductImage(Product p) {
+        List<ProductImage> pis = productImageService.list(p.getId(), ProductImageService.type_single);
+        if (!pis.isEmpty()) {
+            // 获得单个产品图片类型的图片，放在Product的属性中，方便在jsp中通过属性获取图片地址
+            ProductImage pi = pis.get(0);
+            p.setFirstProductImage(pi);
+        }
+    }
+
+    public void setFirstProductImage(List<Product> ps) {
+        for (Product p : ps) {
+            setFirstProductImage(p);
+        }
+    }
+
     // 通过product对象获得cid，再根据categoryservice的get方法获得当前cid对应的category类，存放在pojo Product中方便调用
     public void setCategory(Product p) {
         int cid = p.getCid();
@@ -68,4 +90,45 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
+    /**
+     * 为多个分类填充产品集合
+     * @param cs
+     */
+    @Override
+    public void fill(List<Category> cs) {
+        for (Category c : cs) {
+            fill(c);
+        }
+    }
+
+    /**
+     * 为分类填充产品集合
+     * @param c
+     */
+    @Override
+    public void fill(Category c) {
+        List<Product> ps = list(c.getId());
+        c.setProducts(ps);
+    }
+
+    /**
+     * 为多个分类填充推荐产品集合，即把分类下的产品集合，按照8个为一行，拆成多行，有利于后续页面上进行显示
+     * @param cs
+     */
+    @Override
+    public void fillByRow(List<Category> cs) {
+        int productNumberEachRow = 8;
+        for (Category c : cs) {
+            List<Product> products =  c.getProducts();
+            List<List<Product>> productsByRow =  new ArrayList<>();
+            for (int i = 0; i < products.size(); i+=productNumberEachRow) {
+                int size = i+productNumberEachRow;
+                size= size>products.size()?products.size():size;
+                List<Product> productsOfEachRow =products.subList(i, size);
+                productsByRow.add(productsOfEachRow);
+            }
+            c.setProductsByRow(productsByRow);
+        }
+
+    }
 }

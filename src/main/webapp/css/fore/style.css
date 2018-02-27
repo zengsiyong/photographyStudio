@@ -62,7 +62,7 @@ nav.top div.row div {
 }
 
 div.searchDiv {
-	background-color: #C40000;
+	background-color: #61BFAD;
 	width: 400px;
 	margin: 50px auto;
 	padding: 1px;
@@ -81,7 +81,7 @@ div.searchDiv input {
 div.searchDiv button {
 	width: 110px;
 	border: 1px solid transparent;
-	background-color: #C40000;
+	background-color: #61BFAD;
 	color: white;
 	font-size: 20px;
 	font-weight: bold;
@@ -95,7 +95,7 @@ div.categoryWithCarousel {
 div.carouselBackgroundDiv{
 	width:100%;
 	height:510px;
-	background-color: #E8E8E8;
+	background-color: #EEF6F4;
 	position: absolute;
 	top:36px;
 
@@ -104,7 +104,7 @@ div.carouselBackgroundDiv{
 }
 
 div.categoryWithCarousel div.headbar {
-	background-color: #DD2727;
+	background-color: #61BFAD;
 }
 
 div.carousel-of-product {
@@ -113,7 +113,7 @@ div.carousel-of-product {
 	margin:0px auto;
 }
 div.carousel-inner div.item img{
-	/* 	width:100%; */
+		width:100%;
 }
 
 div.categoryWithCarousel div.categoryMenu {
@@ -177,7 +177,7 @@ div.categoryWithCarousel div.rightMenu a {
 
 div.categoryWithCarousel div.head {
 	width: 200px;
-	background-color: #C60A0A;
+	background-color: #167C80;
 	height: 36px;
 	line-height: 36px;
 	font-size: 16px;
@@ -247,11 +247,13 @@ img.logo {
 	position: absolute;
 	left: 0px;
 	top: 30px;
+	width: 100%;
+	height: 300px;
 	/* 	z-index:-1; */
 }
 
 div.homepageCategoryProducts {
-	background-color: #F5F5F5;
+	background-color: #DFEEEB;
 	padding: 50px 10px 50px 10px;
 	margin: 10px auto;
 	max-width: 1013px;

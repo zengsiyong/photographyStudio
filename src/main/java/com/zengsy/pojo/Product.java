@@ -21,6 +21,8 @@ public class Product {
 
     // 业务需求新增非数据库字段
     private Category category;
+    
+    private ProductImage firstProductImage;
 
     public Category getCategory() {
         return category;
@@ -28,6 +30,14 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public ProductImage getFirstProductImage() {
+        return firstProductImage;
+    }
+
+    public void setFirstProductImage(ProductImage firstProductImage) {
+        this.firstProductImage = firstProductImage;
     }
 
     public Integer getId() {
