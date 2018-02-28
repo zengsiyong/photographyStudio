@@ -432,13 +432,38 @@ div.loginDivInProductPage {
 }
 
 div.loginSmallDiv {
-	background-color: white;
-	position: absolute;
-	right: 180px;
-	top: 180px;
+	background-color: #EEF6F4;
+	/*position: absolute;*/
+	right: 0px;
+	top: 70px;
 	width: 350px;
 	height: 400px;
 	padding: 60px 25px 80px 25px;
+
+}
+
+div.registerSmallDiv {
+	background-color: #EEF6F4;
+	/*position: absolute;*/
+	right: 0px;
+	top: 0px;
+	width: 350px;
+	height: 400px;
+	padding: 0px 0px 0px 0px;
+
+
+}
+
+div.registerSuccess2Div {
+	background-color: #EEF6F4;
+	/*position: absolute;*/
+	right: 0px;
+	top: 0px;
+	width: 600px;
+	height: 400px;
+	padding: 0px 0px 0px 0px;
+
+
 }
 
 div.loginErrorMessageDiv {
@@ -494,7 +519,7 @@ span.loginInputIcon span.glyphicon {
 
 button.redButton {
 	color: white;
-	background-color: #C40000;
+	background-color: #61BFAD;
 	font-size: 14px;
 	font-weight: bold;
 }
@@ -672,10 +697,10 @@ img.simpleLogo {
 }
 
 div.simpleSearchDiv {
-	background-color: #C40000;
+	background-color: #61BFAD;
 	width: 300px;
 	margin: 10px 20px 40px;
-	padding: 1px;
+	padding: 3px;
 	height: 40px;
 	display: block;
 }
@@ -684,14 +709,14 @@ div.simpleSearchDiv input {
 	width: 225px;
 	border: 1px solid transparent;
 	height: 34px;
-	margin: 2px;
+	margin: 1px;
 	outline:none;
 }
 
 div.simpleSearchDiv button {
 	width: 60px;
 	border: 1px solid transparent;
-	background-color: #C40000;
+	background-color: #61BFAD;
 	color: white;
 	font-size: 14px;
 	/* 	font-weight:bold; */
@@ -2117,7 +2142,7 @@ div.makeReviewButtonDiv button {
 }
 
 div.registerDiv {
-	margin: 10px 20px;
+	margin: 0px 0px;
 	text-align: center;
 }
 
@@ -2125,7 +2150,7 @@ table.registerTable {
 	color: #3C3C3C;
 	font-size: 16px;
 	table-layout: fixed;
-	margin-top: 50px;
+	margin-top: 35px;
 }
 
 table.registerTable td {
@@ -2134,12 +2159,12 @@ table.registerTable td {
 }
 
 td.registerTableLeftTD {
-	width: 300px;
+	width: 150px;
 	text-align: right;
 }
 
 td.registerTableRightTD {
-	width: 300px;
+	width: 150px;
 	text-align: left;
 }
 
@@ -2149,7 +2174,7 @@ td.registerTip {
 
 table.registerTable input {
 	border: 1px solid #DEDEDE;
-	width: 213px;
+	width: 120px;
 	height: 36px;
 	font-size: 14px;
 }
@@ -2159,11 +2184,11 @@ td.registerButtonTD {
 }
 
 table.registerTable button {
-	width: 170px;
+	width: 120px;
 	height: 36px;
 	border-radius: 2px;
 	color: white;
-	background-color: #C40000;
+	background-color: #61BFAD;
 	border-width: 0px;
 }
 
@@ -2207,9 +2232,9 @@ div.reviewStasticsDiv {
 }
 
 div.registerErrorMessageDiv {
-	width: 600px;
-	margin: 0px auto;
-	height: 50px;
+	width: 350px;
+	margin: 1px auto;
+	height: 20px;
 	visibility: hidden;
 }
 

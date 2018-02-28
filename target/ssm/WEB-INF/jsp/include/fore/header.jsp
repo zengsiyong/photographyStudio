@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <!-- 让浏览器以UTF显示中文，本页面的中文文字采用UTF-8编码，启动EL表达式  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-		 pageEncoding="UTF-8" isELIgnored="false"%>
+		 pageEncoding="UTF-8" isELIgnored="false"  import="java.util.*" %>
 <!-- 引入标准标签库  -->
 <!-- c通常用于条件判断和遍历  -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -21,8 +21,8 @@
 	<link href="css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
 	<script src="js/bootstrap/3.3.6/bootstrap.min.js"></script>
 
-
-
+    <!-- 引入登入注册页所需的css样式  -->
+    <link rel="stylesheet" type="text/css" href="css/fore/loginPage/styles.css">
     <!-- 引入自定义的前端样式  -->
     <link href="css/fore/style.css" rel="stylesheet">
 

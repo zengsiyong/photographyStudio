@@ -7,12 +7,12 @@
 #gallery-slider #slider-controls a#slider-control-left{left:0;background:url(../bg/gallery-slider-control-left.png);}
 #gallery-slider #slider-controls a#slider-control-right{right:0;background:url(../bg/gallery-slider-control-right.png);}
 #gallery-slider #slider-bottom-controls{height:20px;width:960px;padding-top:-1px;margin:0 auto;}
-#gallery-slider #slider-bottom-controls a#slider-scroll-left, #gallery-slider #slider-bottom-controls a#slider-scroll-right{width:20px;height:20px;display:block;text-indent:-9999px;float:left;text-decoration:none;}
-#gallery-slider #slider-bottom-controls a#slider-scroll-left{background-color:#f592b7;}
-#gallery-slider #slider-bottom-controls a#slider-scroll-right{ background-color:#f592b7;}
-#gallery-slider #slider-bottom-controls a#slider-scroll-left:hover, #gallery-slider #slider-bottom-controls a#slider-scroll-right:hover{background-color:#f592b7;}
-#gallery-slider #slider-bottom-controls #slider-scroll{height:20px;width:920px;background:#fff;float:left;}
-#gallery-slider #slider-bottom-controls div.knob{width:920px;height:18px;overflow:hidden;cursor:pointer;background:#f592b7;border:solid 1px #fff;}
+#gallery-slider #slider-bottom-controls a#slider-scroll-left, #gallery-slider #slider-bottom-controls a#slider-scroll-right{width:20px;height:22px;display:block;text-indent:-9999px;float:left;text-decoration:none;}
+#gallery-slider #slider-bottom-controls a#slider-scroll-left{background-color:#61BFAD;}
+#gallery-slider #slider-bottom-controls a#slider-scroll-right{ background-color:#61BFAD;}
+#gallery-slider #slider-bottom-controls a#slider-scroll-left:hover, #gallery-slider #slider-bottom-controls a#slider-scroll-right:hover{background-color:#F9F7E8;}
+#gallery-slider #slider-bottom-controls #slider-scroll{height:22px;width:920px;background:#fff;float:left;}
+#gallery-slider #slider-bottom-controls div.knob{width:920px;height:20px;overflow:hidden;cursor:pointer;background:#61BFAD;border:solid 1px #fff;}
 #gallery-slider #slider-images-wrapper{margin:auto;height:452px;position:relative;overflow:hidden;}
 #gallery-slider #slider-images-wrapper ul#slider-main-ul{width:1920px;height:450px;position:absolute;left:0;top:0;border:1px solid #FFF;}
 #gallery-slider #slider-images-wrapper ul#slider-main-ul li{float:left;list-style:none;}

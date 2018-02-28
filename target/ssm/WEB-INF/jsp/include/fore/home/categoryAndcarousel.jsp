@@ -115,8 +115,9 @@ $(function(){
 
 
 <%--<%@include file="carousel.jsp" %>--%>
-	<%--<jsp:include page="/index.html" />--%>
-	<object style="border:0px" type="text/x-scriptlet" data="index.html" width=100% height=483</object>
+	<%--<jsp:include page="/carousel.html" />--%>
+	<%--<%@include file="/carousel.html"%>--%>
+<object style="border:0px" type="text/x-scriptlet" data="carousel.html" width=100% height=483</object>
 <div class="carouselBackgroundDiv">
 
 </div>
