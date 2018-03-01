@@ -27,7 +27,7 @@ nav.top {
 }
 
 .redColor {
-	color: #C40000;
+	color: #EE5E4E;
 }
 
 .boldWord {
@@ -754,7 +754,8 @@ div.imgInimgAndInfo {
 }
 
 div.infoInimgAndInfo {
-	padding: 0px 20px;
+	/*margin-left: 60px;*/
+	padding: 12px 30px;
 	overflow: hidden;
 }
 
@@ -841,12 +842,12 @@ div.infoInimgAndInfo span.originalPrice {
 div.infoInimgAndInfo span.promotionPriceYuan {
 	font-family: Arial;
 	font-size: 18px;
-	color: #C40000;
+	color: #EE5E4E;
 	/*     vertical-align: top; */
 }
 
 div.infoInimgAndInfo span.promotionPrice {
-	color: #c40000;
+	color: #EE5E4E;
 	font-family: Arial;
 	font-size: 30px;
 	font-weight: bold;
@@ -935,7 +936,7 @@ div.infoInimgAndInfo span.serviceCommitmentDesc {
 }
 
 div.infoInimgAndInfo span.serviceCommitmentLink a {
-	color: #666666;
+	color: #EE5E4E;
 }
 
 div.productDetailDiv {
@@ -1107,19 +1108,19 @@ div.buyDiv button {
 }
 
 button.buyButton {
-	border: 1px solid #C40000;
-	background-color: #FFEDED;
+	border: 1px solid #61BFAD;
+	background-color: #61BFAD;
 	text-align: center;
 	line-height: 40px;
 	font-size: 16px;
 	/* 	font-weight:700; */
-	color: #C40000;
+	color: #FFFFFF;
 	font-family: arial;
 }
 
 button.addCartButton {
-	border: 1px solid #C40000;
-	background-color: #C40000;
+	border: 1px solid #61BFAD;
+	background-color: #61BFAD;
 	text-align: center;
 	line-height: 40px;
 	font-size: 16px;
@@ -2217,7 +2218,7 @@ div.searchResultDiv {
 }
 
 div.productPageDiv {
-	max-width: 1013px;
+	max-width: 1080px;
 	margin: 10px auto;
 }
 

@@ -53,9 +53,9 @@ public class Log4jInit extends HttpServlet {
 
 	  //如果日志存放路径不存在则新建
       File logFile = new File(logPath);
-      if(!logFile.exists()){  
-          logFile.mkdirs();  
-      }  
+      if(!logFile.exists()){
+          logFile.mkdirs();
+      }
       //修改log4j配置文件log4j.appender.logfile.File配置项的值
 	  props.setProperty("log4j.appender.A2.File", logPath + blankStr + props.getProperty("log4j.appender.A2.File"));
       //装入log4j配置信息

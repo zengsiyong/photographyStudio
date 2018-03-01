@@ -2,10 +2,7 @@ package com.zengsy.service.impl;
 
 import com.zengsy.mapper.ProductMapper;
 import com.zengsy.pojo.*;
-import com.zengsy.service.CategoryService;
-import com.zengsy.service.ProductImageService;
-import com.zengsy.service.ProductService;
-import com.zengsy.service.PropertyService;
+import com.zengsy.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +20,10 @@ public class ProductServiceImpl implements ProductService {
     CategoryService categoryService;
     @Autowired
     ProductImageService productImageService;
+    @Autowired
+    OrderItemService orderItemService;
+    @Autowired
+    ReviewService reviewService;
 
     @Override
     public List list(int cid) {
@@ -130,5 +131,21 @@ public class ProductServiceImpl implements ProductService {
             c.setProductsByRow(productsByRow);
         }
 
+    }
+
+    @Override
+    public void setSaleANdReviewNumber(Product p) {
+        int saleCount = orderItemService.getSaleCount(p.getId());
+        p.setSaleCount(saleCount);
+
+        int reviewCount = reviewService.getCount(p.getId());
+        p.setReviewCount(reviewCount);
+    }
+
+    @Override
+    public void setSaleAndReviewNumber(List<Product> ps) {
+        for (Product p : ps) {
+            setSaleANdReviewNumber(p);
+        }
     }
 }

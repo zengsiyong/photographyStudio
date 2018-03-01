@@ -1,7 +1,6 @@
 package com.zengsy.controller;
 
-import com.zengsy.pojo.Category;
-import com.zengsy.pojo.User;
+import com.zengsy.pojo.*;
 import com.zengsy.service.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.HtmlUtils;
 
 import javax.servlet.http.HttpSession;
@@ -38,6 +38,8 @@ public class ForeController {
     OrderService orderService;
     @Autowired
     OrderItemService orderItemService;
+    @Autowired
+    ReviewService reviewService;
 
     @RequestMapping("forehome")
     public String home(Model model) {
@@ -81,6 +83,63 @@ public class ForeController {
 
         session.setAttribute("user", user);
         return "redirect:forehome";
+    }
+    //前台退出用户功能
+    @RequestMapping("forelogout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("user");
+        return "redirect:forehome";
+    }
+    //前台套餐详情页面
+    @RequestMapping("foreproduct")
+    public String product(int pid, Model model) {
+        //1. 获取参数pid
+        //2. 根据pid获取Product 对象p
+        Product p = productService.get(pid);
+        //3. 根据对象p，获取这个产品对应的单个图片集合
+        List<ProductImage> productSingleImages = productImageService.list(p.getId(), ProductImageService.type_single);
+        //4. 根据对象p，获取这个产品对应的详情图片集合
+        List<ProductImage> productDetailImage = productImageService.list(p.getId(), ProductImageService.type_detail);
+        p.setProductSingleImages(productSingleImages);
+        p.setProductDetailImages(productDetailImage);
+
+        //5. 获取产品的所有属性值
+        List<PropertyValue> pvs = propertyValueService.list(p.getId());
+        //6. 获取产品对应的所有的评价
+        List<Review> reviews = reviewService.list(p.getId());
+        //7. 设置产品的销量和评价数量
+        productService.setSaleANdReviewNumber(p);
+        //8. 把上述取值放在request属性上
+        //9. 服务端跳转到 "product.jsp" 页面
+        model.addAttribute("reviews", reviews);
+        model.addAttribute("p", p);
+        model.addAttribute("pvs", pvs);
+        return "fore/product";
+    }
+    //前台点击立即购买或加入购物车按钮时ajax异步请求查看当前用户登入状态
+    @RequestMapping("forecheckLogin")
+    @ResponseBody
+    public String checkLogin(HttpSession session) {
+        User user = (User)session.getAttribute("user");
+
+        session.getAttribute("user");
+        if (null != user) {
+            return "success";
+        }
+        return "fail";
+    }
+    //通过模态框登入按钮发起的ajax请求进行用户验证登入
+    @RequestMapping("foreloginAjax")
+    @ResponseBody
+    public String loginAjax(@RequestParam("name") String name, @RequestParam("password") String password, HttpSession session) {
+        name = HtmlUtils.htmlEscape(name);
+        User user = userService.get(name,password);
+
+        if (null == user) {
+            return "fail";
+        }
+        session.setAttribute("user", user);
+        return "success";
     }
 }
 

@@ -1,6 +1,3 @@
-<!-- 模仿天猫整站ssm 教程 为how2j.cn 版权所有-->
-<!-- 本教程仅用于学习使用，切勿用于非法用途，由此引起一切后果与本站无关-->
-<!-- 供购买者学习，请勿私自传播，否则自行承担相关法律责任-->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
@@ -72,6 +69,7 @@ $(function(){
         );      
         return false;
     });
+    //通过jQuery的get方法，用异步ajax的方式访问forecheckLogin，获取当前是否是登入状态，如果返回不为"success"则打开登入的模态窗口
     $(".buyLink").click(function(){
         var page = "forecheckLogin";
         $.get(
@@ -88,7 +86,7 @@ $(function(){
         );      
         return false;
     });
-     
+    //通过点击模态框的登入按钮，使用以下的ajax代码进行登入验证
     $("button.loginSubmitButton").click(function(){
         var name = $("#name").val();
         var password = $("#password").val();
@@ -153,31 +151,31 @@ $(function(){
 
 
     <div class="infoInimgAndInfo">
-         
-        <div class="productTitle">
-            ${p.name}
-        </div>
-        <div class="productSubTitle">
-            ${p.subTitle} 
-        </div>
+
+        <%--<div class="productTitle">--%>
+            <%--${p.name}--%>
+        <%--</div>--%>
+        <%--<div class="productSubTitle">--%>
+            <%--${p.subTitle}--%>
+        <%--</div>--%>
 
 
 
         <div class="productPrice">
             <div class="juhuasuan">
-                <span class="juhuasuanBig" >聚划算</span>
-                <span>此商品即将参加聚划算，<span class="juhuasuanTime">1天19小时</span>后开始，</span>
+                <span class="juhuasuanBig">${p.name}</span>
+                <span>${p.subTitle}<span class="juhuasuanTime"></span></span>
             </div>
 
 
 
             <div class="productPriceDiv">
-                <div class="gouwujuanDiv"><img height="16px" src="img/site/gouwujuan.png">
-                <span> 全天猫实物商品通用</span>
-                 
-                </div>
+                <%--<div class="gouwujuanDiv"><img height="16px" src="img/site/gouwujuan.png">--%>
+                <%--<span> 全天猫实物商品通用</span>--%>
+
+                <%--</div>--%>
                 <div class="originalDiv">
-                    <span class="originalPriceDesc">价格</span>
+                    <span class="originalPriceDesc">影楼价格</span>
                     <span class="originalPriceYuan">¥</span>
                     <span class="originalPrice">
                         <fmt:formatNumber type="number" value="${p.originalPrice}" minFractionDigits="2"/>
@@ -185,7 +183,7 @@ $(function(){
                 </div>
 
                 <div class="promotionDiv">
-                    <span class="promotionPriceDesc">促销价 </span>
+                    <span class="promotionPriceDesc">本站价格 </span>
                     <span class="promotionPriceYuan">¥</span>
                     <span class="promotionPrice">
                         <fmt:formatNumber type="number" value="${p.promotePrice}" minFractionDigits="2"/>
@@ -210,26 +208,25 @@ $(function(){
                             <img src="img/site/increase.png">
                     </span>
                     </a>
-                     
+
                     <span class="updownMiddle"> </span>
                     <a href="#nowhere"  class="decreaseNumber">
                     <span class="updown">
                             <img src="img/site/decrease.png">
                     </span>
                     </a>
-                     
+
                 </span>
-                     
+
             件</span>
             <span>库存${p.stock}件</span>
         </div>
         <div class="serviceCommitment">
             <span class="serviceCommitmentDesc">服务承诺</span>
             <span class="serviceCommitmentLink">
-                <a href="#nowhere">正品保证</a>
-                <a href="#nowhere">极速退款</a>
-                <a href="#nowhere">赠运费险</a>
-                <a href="#nowhere">七天无理由退换</a>
+                <a href="#nowhere">联系微信</a>
+                <a href="#nowhere">预付定金</a>
+                <a href="#nowhere">出片付款</a>
             </span>
         </div>    
          
