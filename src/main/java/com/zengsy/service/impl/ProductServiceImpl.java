@@ -1,5 +1,6 @@
 package com.zengsy.service.impl;
 
+import com.sun.corba.se.spi.orbutil.fsm.Guard;
 import com.zengsy.mapper.ProductMapper;
 import com.zengsy.pojo.*;
 import com.zengsy.service.*;
@@ -147,5 +148,16 @@ public class ProductServiceImpl implements ProductService {
         for (Product p : ps) {
             setSaleANdReviewNumber(p);
         }
+    }
+
+    @Override
+    public List<Product> search(String keyword) {
+        ProductExample example = new ProductExample();
+        example.createCriteria().andNameLike("%" + keyword + "%");
+        example.setOrderByClause("id desc");
+        List result = productMapper.selectByExample(example);
+        setFirstProductImage(result);
+        setCategory(result);
+        return result;
     }
 }

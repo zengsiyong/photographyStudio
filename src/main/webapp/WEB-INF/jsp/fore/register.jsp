@@ -12,7 +12,6 @@
 
 
 
-<%--<%@include file="../include/fore/footer.jsp"%>--%>
 
 
 

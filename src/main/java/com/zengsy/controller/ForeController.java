@@ -1,5 +1,7 @@
 package com.zengsy.controller;
 
+import Comparator.*;
+import com.github.pagehelper.PageHelper;
 import com.zengsy.pojo.*;
 import com.zengsy.service.*;
 import org.apache.log4j.Logger;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.HtmlUtils;
 
 import javax.servlet.http.HttpSession;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -140,6 +143,52 @@ public class ForeController {
         }
         session.setAttribute("user", user);
         return "success";
+    }
+
+    @RequestMapping("forecategory")
+    public String category(int cid, String sort,Model model) {
+        //根据cid获取分类Category对象 c
+        Category c = categoryService.get(cid);
+        //为该分类填充产品
+        productService.fill(c);
+        //为产品填充销量和评价数据
+        productService.setSaleAndReviewNumber(c.getProducts());
+        //根据前台界面选择的排序类型排序
+        if(null!=sort){
+            switch(sort){
+                case "review":
+                    Collections.sort(c.getProducts(),new ProductReviewComparator());
+                    break;
+                case "date" :
+                    Collections.sort(c.getProducts(),new ProductDateComparator());
+                    break;
+
+                case "saleCount" :
+                    Collections.sort(c.getProducts(),new ProductSaleCountComparator());
+                    break;
+
+                case "price":
+                    Collections.sort(c.getProducts(),new ProductPriceComparator());
+                    break;
+
+                case "all":
+                    Collections.sort(c.getProducts(),new ProductAllComparator());
+                    break;
+            }
+        }
+        model.addAttribute("c", c);
+        return "fore/category";
+    }
+
+    //每个页面的搜索框都包含了一个form，提交数据keyword到foresearch
+    @RequestMapping("foresearch")
+    public String search(String keyword, Model model) {
+        //根据keyword进行模糊查询，获取满足条件的前20个套餐
+        PageHelper.offsetPage(0,20);
+        List<Product> ps = productService.search(keyword);
+        productService.setSaleAndReviewNumber(ps);
+        model.addAttribute("ps", ps);
+        return "fore/searchResult";
     }
 }
 

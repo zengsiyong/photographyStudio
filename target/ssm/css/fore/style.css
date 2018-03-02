@@ -5,8 +5,17 @@
 body {
 	font-size: 12px;
 	font-family: Arial;
-	min-width:1024px;
+	min-width:1080px;
 	/* 	width:1920px; */
+
+}
+
+.backgroundImage {
+	width: 100%;
+	height:auto;
+	background:url("../../img/site/Windy.jpg") top center no-repeat;
+
+	background-size:cover;
 }
 
 a {
@@ -343,11 +352,12 @@ div.footer_ensure {
 }
 
 div.footer_desc {
-	border-top-style: solid;
-	border-top-width: 1px;
+
+	/*border-top-style: solid;*/
+	border-top-width: 0px;
 	border-top-color: #e7e7e7;
 	padding-top: 30px;
-	margin: 0px 20px;
+	margin-left: 15%;
 }
 
 div.footer div.copyright div.white_link a {
@@ -361,15 +371,22 @@ div.footer div.copyright div.white_link {
 }
 
 div.footer_desc div.descColumn {
+background-color: transparent;
 	width: 20%;
 	float: left;
 	padding-left: 15px;
 }
 
 div.footer_desc div.descColumn span.descColumnTitle {
-	color: #646464;
+	color: #f7f7f5;
 	font-weight: bold;
-	font-size: 16px;
+	font-size: 18px;
+}
+
+div.footer_desc div.descColumn a.descColumnTitle2 {
+	color: #f4f5f1;
+	font-weight: bold;
+	font-size: 13px;
 }
 
 div.footer_desc a {
@@ -378,11 +395,18 @@ div.footer_desc a {
 }
 
 div.copyright {
-	background-color: black;
+	/*background-color: #61BFAD;*/
+
+	width: 100%;
+	height:auto;
+	background:url("../../img/lunbo/2.jpg") top center no-repeat;
+
+	background-size:cover;
 	border-top-style: solid;
+
 	border-top-width: 2px;
 	border-top-color: solid;
-	border-top-color: #C40000;
+	border-top-color: #61BFAD;
 }
 
 img.cateye {
@@ -526,8 +550,8 @@ button.redButton {
 
 div.categorySortBar {
 	background-color: #FAF9F9;
-	margin: 40px 20px 20px 20px;
-	padding: 4px;
+	margin: 20px 20px 10px 20px;
+	padding: 3px;
 }
 
 
@@ -592,7 +616,7 @@ div.productUnit {
 
 div.productUnit:hover {
 	width: 225px;
-	border: 3px solid #C40000;
+	border: 3px solid #61BFAD;
 	padding: 0px;
 }
 
@@ -608,14 +632,15 @@ div.productUnitFrame{
 	border:1px solid #eee;
 }
 div.productUnitFrame:hover{
-	border:1px solid #C40000;
+	border:1px solid #61BFAD;
 }
 
 div.productUnit span.productPrice {
 	font-size: 20px;
-	color: #CC0000;
+	color: #EE5E4E;
 	display: block;
 	padding-left: 4px;
+	text-align: center;
 }
 
 div.productUnit span.productReview {
@@ -632,6 +657,7 @@ div.productUnit a.productLink {
 	color: #333333;
 	font: 0.8em;
 	display: block;
+	text-align: center;
 }
 
 div.productUnit a.productLink:hover {
@@ -670,7 +696,7 @@ div.productUnit span.wangwang {
 
 div.productUnit span.productDealNumber {
 	font-weight: bold;
-	color: #B57C5B;
+	color: #EE5E4E;
 }
 
 div.productUnit span.productReviewNumber {
@@ -2156,7 +2182,7 @@ table.registerTable {
 
 table.registerTable td {
 	/* 	border:1px dotted skyblue !important; */
-	padding: 10px 30px;
+	padding: 8px 30px;
 }
 
 td.registerTableLeftTD {
@@ -2177,7 +2203,7 @@ table.registerTable input {
 	border: 1px solid #DEDEDE;
 	width: 120px;
 	height: 36px;
-	font-size: 14px;
+	font-size: 10px;
 }
 
 td.registerButtonTD {

@@ -91,5 +91,5 @@
 	</script>
 </head>
 
-<body style="background:#EEF6F4;">
+<body style="background:#EEF6F4;" class="backgroundImage">
 

@@ -3,7 +3,7 @@
 		 pageEncoding="UTF-8" isELIgnored="false"%>
 
 <nav class="top ">
-	<a href="${contextPath}">
+	<a href="forehome">
 		<span style="color:#1F375B;margin:0px" class=" glyphicon glyphicon-home redColor"></span>
 		影楼首页
 	</a>
