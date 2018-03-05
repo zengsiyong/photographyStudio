@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.HtmlUtils;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -189,6 +190,56 @@ public class ForeController {
         productService.setSaleAndReviewNumber(ps);
         model.addAttribute("ps", ps);
         return "fore/searchResult";
+    }
+
+    @RequestMapping("forebuyone")
+    public String buyone(int pid, int num, HttpSession session) {
+        Product p = productService.get(pid);
+        int oiid = 0;
+
+        User user = (User)session.getAttribute("user");
+        boolean found = false;
+        //查询当前用户的所有订单项
+        List<OrderItem> ois = orderItemService.listByUser(user.getId());
+        //遍历订单项，如果已经存在相同的套餐，并且还没有生成订单，即还在购物车中。 那么就应该在对应的OrderItem基础上，调整数量
+        for (OrderItem oi : ois) {
+            if (oi.getProduct().getId().intValue() == p.getId().intValue()) {
+                oi.setNumber(oi.getNumber()+num);
+                orderItemService.update(oi);
+                found = true;
+                oiid = oi.getId();
+                break;
+            }
+        }
+
+        if(!found) {
+            OrderItem oi = new OrderItem();
+            oi.setUid(user.getId());
+            oi.setNumber(num);
+            oi.setPid(pid);
+            orderItemService.add(oi);
+            oiid = oi.getId();
+        }
+        return "redirect:forebuy?oiid=" + oiid;
+    }
+
+    //点击购买之后跳转的结算界面
+    @RequestMapping("forebuy")
+    public String buy(Model model, String[] oiid, HttpSession session) {
+        List<OrderItem> ois = new ArrayList<>();
+        float total = 0;
+        //因为结算页面也可能是通过购物车页面跳转过来的，可能存在多个订单项,所以要用字符串数组获取多个oiid
+        for (String strid : oiid) {
+            int id = Integer.parseInt(strid);
+            OrderItem oi = orderItemService.get(id);
+            //累计这些订单项的产品和数量相乘的价格总数
+            total += oi.getProduct().getPromotePrice()*oi.getNumber();
+            ois.add(oi);
+
+        }
+        session.setAttribute("ois", ois);
+        model.addAttribute("total", total);
+        return "fore/buy";
     }
 }
 

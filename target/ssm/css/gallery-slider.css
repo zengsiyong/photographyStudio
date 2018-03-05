@@ -16,7 +16,7 @@
 #gallery-slider #slider-images-wrapper{margin:auto;height:452px;position:relative;overflow:hidden;}
 #gallery-slider #slider-images-wrapper ul#slider-main-ul{width:1920px;height:450px;position:absolute;left:0;top:0;border:1px solid #FFF;}
 #gallery-slider #slider-images-wrapper ul#slider-main-ul li{float:left;list-style:none;}
-#gallery-slider #slider-images-wrapper ul#slider-main-ul li ul{float:left;width:320px;}
+#gallery-slider #slider-images-wrapper ul#slider-main-ul li ul{float:left;width:480px;}
 #gallery-slider #slider-images-wrapper ul#slider-main-ul li li{border:solid 1px #fff;background:#eae9e2 url(../bg/duotive-slideshow-preloader2.gif) no-repeat center;overflow:hidden;}
 #gallery-slider ul#slider-main-ul li a{text-decoration:none;position:relative;display:none;}
 #gallery-slider ul#slider-main-ul li a div.icon{position:absolute;width:16px;height:16px;}
@@ -27,9 +27,11 @@
 #gallery-slider ul#slider-main-ul li a span strong{display:block;font-size:10pt;padding-bottom:11px;}
 #gallery-slider ul#slider-main-ul li a span em{display:block;font-size:8pt;padding-top:11px;font-style:normal;}
 #gallery-slider ul#slider-main-ul li a img{position:absolute;top:0;left:0;}
-#gallery-slider ul#slider-main-ul li li.type-1, #gallery-slider ul#slider-main-ul li li.type-1 a{width:158px;height:148px;}
-#gallery-slider ul#slider-main-ul li li.type-1 a span{width:118px;height:108px;}
-#gallery-slider ul#slider-main-ul li li.type-2, #gallery-slider ul#slider-main-ul li li.type-2 a{width:318px;height:148px;}
-#gallery-slider ul#slider-main-ul li li.type-2 a span{width:278px;height:108px;}
-#gallery-slider ul#slider-main-ul li li.type-3, #gallery-slider ul#slider-main-ul li li.type-3 a{width:318px;height:298px;}
-#gallery-slider ul#slider-main-ul li li.type-3 a span{width:278px;height:258px;}
+#gallery-slider ul#slider-main-ul li li.type-1, #gallery-slider ul#slider-main-ul li li.type-1 a{width:238px;height:148px;}
+#gallery-slider ul#slider-main-ul li li.type-1 a span{width:208px;height:108px;}
+#gallery-slider ul#slider-main-ul li li.type-2, #gallery-slider ul#slider-main-ul li li.type-2 a{width:478px;height:148px;}
+#gallery-slider ul#slider-main-ul li li.type-2 a span{width:438px;height:108px;}
+#gallery-slider ul#slider-main-ul li li.type-3, #gallery-slider ul#slider-main-ul li li.type-3 a{width:478px;height:298px;}
+#gallery-slider ul#slider-main-ul li li.type-3 a span{width:438px;height:258px;}
+#gallery-slider ul#slider-main-ul li li.type-4, #gallery-slider ul#slider-main-ul li li.type-4 a{width:298px;height:448px;}
+#gallery-slider ul#slider-main-ul li li.type-4 a span{width:268px;height:418px;}

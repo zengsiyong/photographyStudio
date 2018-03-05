@@ -19,7 +19,6 @@
           <context:include-filter type="annotation" 
           expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
-
     <!-- 配置注解驱动 -->
     <mvc:annotation-driven />
     <!--开通静态资源的访问-->

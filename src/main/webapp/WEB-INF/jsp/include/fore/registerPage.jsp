@@ -157,7 +157,7 @@
 					</tr>
 					<tr>
 						<td class="registerTableLeftTD">登陆名</td>
-						<td  class="registerTableRightTD"><input id="name" name="name" placeholder="会员名一旦设置成功，无法修改" > </td>
+						<td  class="registerTableRightTD"><input id="name" name="name" placeholder="会员名不超过25字" > </td>
 					</tr>
 					<tr>
 						<td  class="registerTip registerTableLeftTD">设置登陆密码</td>

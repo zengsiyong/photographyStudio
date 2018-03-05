@@ -34,20 +34,21 @@ public class CategoryController {
 	CategoryService categoryService;
 	@RequestMapping("admin_category_list")
 	public String list(Model model, Page page) {
-		// 不使用分页插件的分页查询方式
-		// List<Category> cs = categoryService.list(page);
-		// int total = categoryService.total();
-
 		// 使用pageHelper插件分页,固定格式
 		PageHelper.offsetPage(page.getStart(), page.getCount());
 		List<Category> cs = categoryService.list();
 		int total = (int) new PageInfo<>(cs).getTotal();
 		page.setTotal(total);
 
-
 		model.addAttribute("cs", cs);
 		model.addAttribute("page", page);
 		return "admin/listCategory";
+
+		// 不使用分页插件的分页查询方式
+		// List<Category> cs = categoryService.list(page);
+		// int total = categoryService.total();
+
+
 	}
 
 	// 增加新的分类

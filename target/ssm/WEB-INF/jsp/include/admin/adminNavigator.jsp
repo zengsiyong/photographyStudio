@@ -25,7 +25,7 @@
 				<img style="margin-left:0px;margin-right:15px" class="pull-left" src="${path}/img/site/sitelogo.jpg" height="50px">
 				<div>
 					<ul class="nav navbar-nav">
-						<li><a class="navbar-brand" href="#nowhere">商城后台</a></li>
+						<li><a class="navbar-brand" href="#nowhere">影楼后台</a></li>
 						<li><a class="navbar-brand" href="admin_category_list">分类管理</a></li>
 						<li><a class="navbar-brand" href="admin_user_list">用户管理</a></li>
 						<li><a class="navbar-brand" href="admin_order_list">订单管理</a></li>

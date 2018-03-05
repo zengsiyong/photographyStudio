@@ -1161,12 +1161,12 @@ button.addCartButton span.glyphicon {
 }
 
 div.address {
-	margin: 20px 5px;
+	margin: 60px 5px;
 	text-align: left;
 }
 
 div.addressTip, div.productListTip {
-	color: #333333;
+	color: #167C80;
 	font-size: 16px;
 	font-weight: bold;
 	text-align: left;
@@ -1260,7 +1260,7 @@ th.productListTableFirstColumn {
 }
 
 table.productListTable tr.rowborder td {
-	background-color: #b2d1ff;
+	background-color: #61BFAD;
 	border-right: 2px solid #fff;
 	height: 3px;
 }
@@ -1298,7 +1298,7 @@ span.orderItemProductPrice, span.orderItemProductNumber {
 }
 
 span.orderItemUnitSum {
-	color: #CC0000;
+	color: #EE5E4E;
 	font-weight: bold;
 }
 
@@ -1341,7 +1341,7 @@ div.orderItemSumDiv span {
 
 div.orderItemSumDiv {
 	padding: 20px;
-	border-top: 2px solid #B4D0FF;
+	border-top: 2px solid #61BFAD;
 	background-color: #F2F6FF;
 	height: 50px;
 }
@@ -1365,7 +1365,7 @@ span.leaveMessageTextareaSpan {
 
 div.orderItemTotalSumDiv {
 	margin: 40px;
-	height: 40px;
+	height: 5px;
 }
 
 div.orderItemTotalSumDiv span {
@@ -1373,7 +1373,7 @@ div.orderItemTotalSumDiv span {
 }
 
 span.orderItemTotalSumSpan {
-	color: #C40000 !important;
+	color: #EE5E4E !important;
 	font-size: 22px;
 	font-weight: bold;
 	border-bottom: 1px dotted #F2F6FF;
@@ -1385,8 +1385,8 @@ div.submitOrderDiv {
 }
 
 button.submitOrderButton {
-	border: 1px solid #C40000;
-	background-color: #C40000;
+	border: 1px solid #167C80;
+	background-color: #167C80;
 	text-align: center;
 	line-height: 40px;
 	font-size: 14px;
