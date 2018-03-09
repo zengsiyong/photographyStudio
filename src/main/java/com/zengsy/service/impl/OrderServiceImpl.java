@@ -58,6 +58,7 @@ public class OrderServiceImpl implements OrderService {
         for (OrderItem oi: ois) {
             oi.setOid(o.getId());
             orderItemService.update(oi);
+            //计算该笔订单所有订单项的价钱总和
             total+=oi.getProduct().getPromotePrice()*oi.getNumber();
         }
         return total;
