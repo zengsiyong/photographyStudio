@@ -74,6 +74,7 @@ public class ForeController {
 
         return "redirect:registerSuccessPage";
     }
+
     //loginPage.jsp的form提交数据到路径 forelogin,导致ForeController.login()方法被调用
     @RequestMapping("forelogin")
     public String login(@RequestParam String name, @RequestParam("password") String password, Model model, HttpSession session) {
@@ -240,6 +241,39 @@ public class ForeController {
         session.setAttribute("ois", ois);
         model.addAttribute("total", total);
         return "fore/buy";
+    }
+
+    @RequestMapping("foreaddCart")
+    @ResponseBody
+    public String addCart(int pid, int num, Model model, HttpSession session) {
+        Product p = productService.get(pid);
+        User user = (User)session.getAttribute("user");
+        boolean found = false;
+
+        List<OrderItem> ois = orderItemService.listByUser(user.getId());
+        for (OrderItem oi : ois) {
+            if (oi.getProduct().getId().intValue() == p.getId().intValue()) {
+                oi.setNumber(oi.getNumber() + num);
+                orderItemService.update(oi);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            OrderItem oi = new OrderItem();
+            oi.setUid(user.getId());
+            oi.setNumber(num);
+            oi.setPid(pid);
+            orderItemService.add(oi);
+        }
+        return "success";
+    }
+    @RequestMapping("forecart")
+    public String cart (Model model, HttpSession httpSession) {
+        User user = (User)httpSession.getAttribute("user");
+        List<OrderItem> ois = orderItemService.listByUser(user.getId());
+        model.addAttribute("ois", ois);
+        return "fore/cart";
     }
 }
 

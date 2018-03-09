@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.imageio.ImageIO;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -20,7 +22,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by xlc on 2017-11-16.
+ * Created by zengsy on 2017-11-16.
  */
 @Controller
 @RequestMapping("")
@@ -44,25 +46,52 @@ public class ProductImageContoller {
     }
 
     @RequestMapping("admin_productImage_add")
-    public String add(ProductImage pi, HttpSession session, UploadedImageFile uploadedImageFile) {
+    public String add(ProductImage pi, HttpSession session, UploadedImageFile uploadedImageFile, HttpServletRequest request) {
         // 通过pi对象接收jsp页面参数type和pid的注入，借助service类向数据库中插入数据，在最后的dao操作方法中通过pid和type在相应表中添加记录
         productImageService.add(pi);
         // 文件名以保存到数据库的分类对象的id+".jpg"命名
         String fileName = pi.getId() + ".jpg";
         String imageFolder;
+        String imageFolder_single = null;
         String imageFolder_small = null;
         String imageFolder_middle = null;
+
+        //获得项目部署的服务器bin目录
+        //D:\PhotographyStudio\PhotographyStudio_tomcat7\apache-tomcat-7.0.50\bin
+        imageFolder = System.getProperty("user.dir");
+        System.out.println("*************获得的相对路径:" + imageFolder);
+        //获取windows或linux系统下对应的目录间隔符
+        String blankStr = System.getProperty("file.separator");
+
         // 通过条件语句判断增加产品图片的页面新增的图片类型是单个商品图片的或者是详情页图片，根据不同类型设置不同的图片存储路径
         // 除此之外， 每上传一图片，都会有对应的正常，中等和小的三种大小图片，并且放在3个不同的目录下
         if (ProductImageService.type_single.equals(pi.getType())) {
-            imageFolder = session.getServletContext().getRealPath("img/productSingle");
-            imageFolder_small = session.getServletContext().getRealPath("img/productSingle_small");
-            imageFolder_middle = session.getServletContext().getRealPath("img/productSingle_middle");
+            //imageFolder = session.getServletContext().getRealPath("img/productSingle");
+            imageFolder_single = imageFolder + blankStr + "img" + blankStr + "productSingle";
+            imageFolder_small = imageFolder + blankStr + "img" + blankStr + "productSingle_small";
+            imageFolder_middle= imageFolder + blankStr + "img" + blankStr + "productSingle_middle";
+
+            //如果日志存放路径不存在则新建
+            File imageFolder_single_file = new File(imageFolder_single);
+            if(!imageFolder_single_file.exists()){
+                imageFolder_single_file.mkdirs();
+            }
+            File imageFolder_small_file = new File(imageFolder_small);
+            if(!imageFolder_small_file.exists()){
+                imageFolder_small_file.mkdirs();
+            }
+            File imageFolder_middle_file = new File(imageFolder_middle);
+            if(!imageFolder_middle_file.exists()){
+                imageFolder_middle_file.mkdirs();
+            }
+
+
         } else {
-            imageFolder = session.getServletContext().getRealPath("img/productDetail");
+            imageFolder_single = imageFolder + blankStr + "img" + blankStr + "productDetail";
+            //imageFolder = session.getServletContext().getRealPath("img/productDetail");
         }
 
-        File f = new File(imageFolder, fileName);
+        File f = new File(imageFolder_single, fileName);
         f.getParentFile().mkdirs();
         try {
             // 通过uploadedImageFIle保存文件

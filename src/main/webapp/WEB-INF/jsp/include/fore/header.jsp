@@ -27,6 +27,8 @@
     <link href="css/fore/style.css" rel="stylesheet">
 
 	<script>
+        //公共js函数
+        //以千进制格式化金额，比如金额是123456,就会显示成123,456
         function formatMoney(num){
             num = num.toString().replace(/\$|\,/g,'');
             if(isNaN(num))

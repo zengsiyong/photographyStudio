@@ -1,6 +1,3 @@
-<!-- 模仿天猫整站ssm 教程 为how2j.cn 版权所有-->
-<!-- 本教程仅用于学习使用，切勿用于非法用途，由此引起一切后果与本站无关-->
-<!-- 供购买者学习，请勿私自传播，否则自行承担相关法律责任-->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
@@ -39,8 +36,9 @@ $(function(){
 				);
 			
 		}
-	})	
-	
+	})
+//	接下来是对各种不停的事件进行监听，并作出响应，有如下4中事件需要监听
+	//1. 选中一种商品
 	$("img.cartProductItemIfSelected").click(function(){
 		var selectit = $(this).attr("selectit")
 		if("selectit"==selectit){
@@ -51,12 +49,13 @@ $(function(){
 		else{
 			$(this).attr("src","img/site/cartSelected.png");
 			$(this).attr("selectit","selectit")
-			$(this).parents("tr.cartProductItemTR").css("background-color","#FFF8E1");
+			$(this).parents("tr.cartProductItemTR").css("background-color","#B7E0AB");
 		}
 		syncSelect();
 		syncCreateOrderButton();
 		calcCartSumPriceAndNumber();
 	});
+	//2.商品全选
 	$("img.selectAllItem").click(function(){
 		var selectit = $(this).attr("selectit")
 		if("selectit"==selectit){
@@ -74,7 +73,7 @@ $(function(){
 			$(".cartProductItemIfSelected").each(function(){
 				$(this).attr("src","img/site/cartSelected.png");
 				$(this).attr("selectit","selectit");
-				$(this).parents("tr.cartProductItemTR").css("background-color","#FFF8E1");
+				$(this).parents("tr.cartProductItemTR").css("background-color","#F8F2E3");
 			});				
 		}
 		syncCreateOrderButton();
@@ -82,7 +81,9 @@ $(function(){
 		
 
 	});
-	
+//	3.直接修改数量
+//	监听keyup事件，根据超链上的pid，获取这种商品对应的库存，价格和数量。 如果数量小于1，那么就取1,如果大于库存，就取库存值。
+//  最后调用syncPrice，同步价格和总数信息。
 	$(".orderItemNumberSetting").keyup(function(){
 		var pid=$(this).attr("pid");
 		var stock= $("span.orderItemStock[pid="+pid+"]").text();
@@ -99,7 +100,7 @@ $(function(){
 		
 		syncPrice(pid,num,price);
 	});
-
+	//3.增加和减少数量
 	$(".numberPlus").click(function(){
 		
 		var pid=$(this).attr("pid");
@@ -136,8 +137,6 @@ $(function(){
 		location.href="forebuy?"+params;
 	});
 	
-	
-	
 })
 
 function syncCreateOrderButton(){
@@ -149,7 +148,7 @@ function syncCreateOrderButton(){
 	});
 	
 	if(selectAny){
-		$("button.createOrderButton").css("background-color","#C40000");
+		$("button.createOrderButton").css("background-color","#61BFAD");
 		$("button.createOrderButton").removeAttr("disabled");
 	}
 	else{
@@ -158,6 +157,7 @@ function syncCreateOrderButton(){
 	}
 		
 }
+//同步"全选"状态。 选中和未选中是采用了两个不同的图片实现的，遍历所有的商品，看是否全部都选中了，只要有任意一个没有选中，那么就不是全选状态。 然后通过切换图片显示是否全选状态的效果。
 function syncSelect(){
 	var selectAll = true;
 	$(".cartProductItemIfSelected").each(function(){
@@ -215,11 +215,11 @@ function syncPrice(pid,num,price){
 
 <title>购物车</title>
 <div class="cartDiv">
-	<div class="cartTitle pull-right">
-		<span>已选商品  (不含运费)</span>
-		<span class="cartTitlePrice">￥0.00</span>
-		<button class="createOrderButton" disabled="disabled">结 算</button>
-	</div>
+	<%--<div class="cartTitle pull-right">--%>
+		<%--<span>已选套餐服务</span>--%>
+		<%--<span class="cartTitlePrice">￥0.00</span>--%>
+		<%--<button class="createOrderButton" disabled="disabled">结 算</button>--%>
+	<%--</div>--%>
 	
 	
 	<div class="cartProductList">
@@ -251,7 +251,6 @@ function syncPrice(pid,num,price){
 								<a href="foreproduct?pid=${oi.product.id}" class="cartProductLink">${oi.product.name}</a>
 								<div class="cartProductLinkInnerDiv">
 									<img src="img/site/creditcard.png" title="支持信用卡支付">
-									<img src="img/site/7day.png" title="消费者保障服务,承诺7天退货">
 									<img src="img/site/promise.png" title="消费者保障服务,承诺如实描述">
 								</div>
 							</div>
@@ -295,9 +294,9 @@ function syncPrice(pid,num,price){
 <!-- 		<a href="#">删除</a> -->
 		
 		<div class="pull-right">
-			<span>已选商品 <span class="cartSumNumber" >0</span> 件</span>
+			<span>已选套餐服务 <span class="cartSumNumber" >0</span> 件</span>
 			
-			<span>合计 (不含运费): </span> 
+			<span>合计: </span>
 			<span class="cartSumPrice" >￥0.00</span>
 			<button class="createOrderButton" disabled="disabled" >结  算</button>
 		</div>

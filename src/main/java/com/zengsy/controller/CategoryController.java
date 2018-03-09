@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import com.sun.media.jfxmedia.logging.Logger;
 import com.zengsy.util.ImageUtil;
 import com.zengsy.util.UploadedImageFile;
 import org.mybatis.generator.internal.PluginAggregator;
@@ -24,16 +25,27 @@ import com.zengsy.service.CategoryService;
 import com.zengsy.util.Page;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 // 告诉spring mvc这是一个控制器类
 @Controller
 @RequestMapping("")
 public class CategoryController {
+	//log4j
+	private final static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger("PhotographyStudio_log");
+	//获得项目部署的服务器bin目录
+	//D:\PhotographyStudio\PhotographyStudio_tomcat7\apache-tomcat-7.0.50\bin
+	String imageFolderPath = System.getProperty("user.dir");
+	//获取windows或linux系统下对应的目录间隔符
+	String blankStr = System.getProperty("file.separator");
 	@Autowired
 	CategoryService categoryService;
 	@RequestMapping("admin_category_list")
-	public String list(Model model, Page page) {
+	public String list(Model model, Page page, HttpSession session, HttpServletRequest request) {
+		log.info("获取静态图片存放的相对路径" + imageFolderPath);
+
+		//session.setAttribute("imageFolder", imageFolder);
 		// 使用pageHelper插件分页,固定格式
 		PageHelper.offsetPage(page.getStart(), page.getCount());
 		List<Category> cs = categoryService.list();
@@ -68,7 +80,8 @@ public class CategoryController {
 	public String add(Category c, HttpSession session, UploadedImageFile uploadedImageFile) throws IOException {
 	    categoryService.add(c);
 	    // 通过session获取ControllerContext,再通过getRealPath定位存放分类图片的路径。 得到的file路径为.....\target\ssm\img\category
-	    File imageFolder = new File(session.getServletContext().getRealPath("img/category"));
+	    //File imageFolder = new File(session.getServletContext().getRealPath("img/category"));
+	    File imageFolder = new File(imageFolderPath + blankStr + "img" + blankStr +"category");
 	    // 根据分类id创建文件名
 	    File file = new File(imageFolder, c.getId() + ".jpg");
 
@@ -92,7 +105,7 @@ public class CategoryController {
 	public String delete(int id, HttpSession session) {
 		categoryService.delete(id);
 
-		File imageFolder = new File(session.getServletContext().getRealPath("img/category"));
+		File imageFolder = new File(imageFolderPath + blankStr + "img" + blankStr +"category");
 		File file = new File(imageFolder, id + ".jpg");
 		file.delete();
 
@@ -113,7 +126,7 @@ public class CategoryController {
 		categoryService.update(c);
 		MultipartFile image = uploadedImageFile.getImage();
 		if(null!=image &&!image.isEmpty()){
-			File  imageFolder= new File(session.getServletContext().getRealPath("img/category"));
+			File  imageFolder= new File(imageFolderPath + blankStr + "img" + blankStr +"category");
 			File file = new File(imageFolder,c.getId()+".jpg");
 			image.transferTo(file);
 			BufferedImage img = ImageUtil.change2jpg(file);

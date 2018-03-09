@@ -1511,7 +1511,7 @@ div.cartDiv {
 }
 
 span.cartTitlePrice {
-	color: #C40000;
+	color: #F06A4E;
 	font-size: 14px;
 	font-weight: bold;
 	margin-left: 5px;
@@ -1585,14 +1585,14 @@ span.cartProductItemPromotionPrice {
 	font-family: Arial;
 	font-size: 14px;
 	font-weight: bold;
-	color: #C40000;
+	color: #F06A4E;
 }
 
 span.cartProductItemSmallSumPrice {
 	font-family: Arial;
 	font-size: 14px;
 	font-weight: bold;
-	color: #C40000;
+	color: #F06A4E;
 }
 
 div.cartProductChangeNumberDiv {
@@ -1631,13 +1631,13 @@ div.cartFoot {
 }
 
 span.cartSumNumber {
-	color: #C40000;
+	color: #F06A4E;
 	font-weight: bold;
 	font-size: 16px;
 }
 
 span.cartSumPrice {
-	color: #C40000;
+	color: #F06A4E;
 	font-weight: bold;
 	font-size: 20px;
 }
@@ -1660,7 +1660,7 @@ div.boughtDiv {
 }
 
 div.orderType div.selectedOrderType {
-	border-bottom: 2px solid #C40000;
+	border-bottom: 2px solid #F06A4E;
 }
 
 div.orderType div {
@@ -1692,11 +1692,11 @@ div.orderType a {
 }
 
 div.orderType div.selectedOrderType a {
-	color: #C40000;
+	color: #F06A4E;
 }
 
 div.orderType a:hover {
-	color: #C40000;
+	color: #F06A4E;
 	text-decoration: none;
 }
 
@@ -1811,8 +1811,8 @@ button.orderListItemReview {
 }
 
 button.orderListItemReview:hover {
-	border-color: #C40000;
-	color: #C40000;
+	border-color: #F06A4E;
+	color: #F06A4E;
 }
 
 td.orderItemDeleteTD {

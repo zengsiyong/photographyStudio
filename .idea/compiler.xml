@@ -24,8 +24,16 @@
         <processorPath useClasspath="true" />
         <module name="ssm" />
       </profile>
+      <profile default="false" name="Annotation profile for PhotographyStudio" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="PhotographyStudio" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="PhotographyStudio" target="1.8" />
       <module name="ssm" target="1.8" />
     </bytecodeTargetLevel>
   </component>
