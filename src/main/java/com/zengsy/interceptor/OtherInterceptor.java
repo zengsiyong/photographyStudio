@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- *
+ * 在session中存入所有页面都需要的参数，contextPath和List<Category>
  * Created by zengsy on 2018-03-06.
  */
 public class OtherInterceptor extends HandlerInterceptorAdapter {

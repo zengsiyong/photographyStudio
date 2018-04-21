@@ -7,4 +7,4 @@
 <%@include file="../include/fore/simpleSearch.jsp"%>
 
 <%@include file="../include/fore/cart/cartPage.jsp"%>
-<%@include file="../include/fore/footer.jsp"%>
+<%--<%@include file="../include/fore/footer.jsp"%>--%>

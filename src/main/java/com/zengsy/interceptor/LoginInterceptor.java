@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 
 /**
+ * 该拦截器拦截所有需要登入信息的页面，如果没有账户登入信息，则重定向到登入页面
  * Created by zengsy on 2018-03-06.
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter {

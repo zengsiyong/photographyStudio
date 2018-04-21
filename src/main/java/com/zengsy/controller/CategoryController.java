@@ -43,7 +43,7 @@ public class CategoryController {
 	CategoryService categoryService;
 	@RequestMapping("admin_category_list")
 	public String list(Model model, Page page, HttpSession session, HttpServletRequest request) {
-		log.info("获取静态图片存放的相对路径" + imageFolderPath);
+		log.info("获取静态图片存放的根目录，即tomcat服务器的bin目录" + imageFolderPath);
 
 		//session.setAttribute("imageFolder", imageFolder);
 		// 使用pageHelper插件分页,固定格式

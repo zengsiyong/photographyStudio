@@ -77,7 +77,7 @@
 
 						<%-- 注意这个跳转链接需要更改--%>
 						<td><a href="admin_propertyValue_edit?pid=${p.id}"><span
-								class="glyphicon glyphicon glyphicon-tasks"></span></a></td>
+								class="glyphicon glyphicon-th-list"></span></a></td>
 
 						<td><a href="admin_product_edit?id=${p.id}"><span
 								class="glyphicon glyphicon-edit"></span></a></td>

@@ -29,9 +29,9 @@ public class PropertyValueController {
         propertyValueService.init(p);
         // 获取当前产品对应的所有属性值
         List<PropertyValue> pvs = propertyValueService.list(p.getId());
-        for(int i = 0 ; i < pvs.size() ; i++) {
-            System.out.println(pvs.get(i).getValue());
-        }
+        //for(int i = 0 ; i < pvs.size() ; i++) {
+        //    System.out.println(pvs.get(i).getValue());
+        //}
 
         model.addAttribute("p", p);
         model.addAttribute("pvs", pvs);

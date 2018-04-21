@@ -339,6 +339,7 @@ img.endpng {
 
 div.footer {
 	margin: 0px 0px;
+
 	border-top-style: solid;
 	border-top-width: 1px;
 	border-top-color: solid;
@@ -399,7 +400,7 @@ div.copyright {
 
 	width: 100%;
 	height:auto;
-	background:url("../../images/c2.jpg") top center no-repeat;
+	background:url("../../images/blackbackground.jpg") top center no-repeat;
 
 	background-size:cover;
 	border-top-style: solid;
@@ -719,7 +720,7 @@ img.simpleLogo {
 	position: absolute;
 	left: 10px;
 	top: 50px;
-	width: 140px;
+	width: 280px;
 }
 
 div.simpleSearchDiv {

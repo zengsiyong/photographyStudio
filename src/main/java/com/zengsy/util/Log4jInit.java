@@ -14,19 +14,7 @@ import org.apache.log4j.PropertyConfigurator;
 
 
 /**
- *
- * <p>Title: 程序的初始化操作</p>
- *
- * <p>Description:
  * 1.初始化Log4J的配置参数
- * </p>
- *
- * <p>Copyright: Copyright (c) 2005</p>
- *
- * <p>Company: ffsc</p>
- *
- * @author 赖歆,方旭尘
- * @version 1.0
  */
 public class Log4jInit extends HttpServlet {
 

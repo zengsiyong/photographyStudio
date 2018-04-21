@@ -71,7 +71,7 @@ public class ProductImageContoller {
             imageFolder_small = imageFolder + blankStr + "img" + blankStr + "productSingle_small";
             imageFolder_middle= imageFolder + blankStr + "img" + blankStr + "productSingle_middle";
 
-            //如果日志存放路径不存在则新建
+            //如果图片存放路径不存在则新建
             File imageFolder_single_file = new File(imageFolder_single);
             if(!imageFolder_single_file.exists()){
                 imageFolder_single_file.mkdirs();

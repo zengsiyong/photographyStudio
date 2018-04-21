@@ -279,6 +279,34 @@ public class ForeController {
         return "fore/cart";
     }
 
+    @RequestMapping("forechangeOrderItem")
+    @ResponseBody
+    public String changeOrderItem( Model model,HttpSession session, int pid, int number) {
+        User user =(User)  session.getAttribute("user");
+        if(null==user)
+            return "fail";
+
+        List<OrderItem> ois = orderItemService.listByUser(user.getId());
+        for (OrderItem oi : ois) {
+            if(oi.getProduct().getId().intValue()==pid){
+                oi.setNumber(number);
+                orderItemService.update(oi);
+                break;
+            }
+
+        }
+        return "success";
+    }
+    @RequestMapping("foredeleteOrderItem")
+    @ResponseBody
+    public String deleteOrderItem( Model model,HttpSession session,int oiid){
+        User user =(User)  session.getAttribute("user");
+        if(null==user)
+            return "fail";
+        orderItemService.delete(oiid);
+        return "success";
+    }
+
     @RequestMapping("forecreateOrder")
     public String createOrder( Model model,Order order,HttpSession session){
         User user =(User)  session.getAttribute("user");
@@ -305,6 +333,31 @@ public class ForeController {
         model.addAttribute("o", order);
         return "fore/payed";
     }
+
+
+    @RequestMapping("forebought")
+    public String bought(Model model, HttpSession session) {
+        //通过session获取用户user
+        User user = (User) session.getAttribute("user");
+        //查询user所有的状态不是“delete”的订单集合os
+        List<Order> os = orderService.list(user.getId(), OrderService.delete);
+
+        //为这些订单填充订单项
+        orderItemService.fill(os);
+        model.addAttribute("os", os);
+        return "fore/bought";
+    }
+
+    //删除订单
+    @RequestMapping("foredeleteOrder")
+    @ResponseBody
+    public String deleteOrder( Model model,int oid){
+        Order o = orderService.get(oid);
+        o.setStatus(OrderService.delete);
+        orderService.update(o);
+        return "success";
+    }
+
 }
 
 

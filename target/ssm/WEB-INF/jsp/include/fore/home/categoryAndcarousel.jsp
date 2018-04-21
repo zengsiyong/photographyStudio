@@ -77,7 +77,7 @@ $(function(){
 });
 </script>
 
-<img src="img/site/catear.png" id="catear" class="catear"/>
+<%--<img src="img/site/catear.png" id="catear" class="catear"/>--%>
 	
 <div class="categoryWithCarousel">
 
